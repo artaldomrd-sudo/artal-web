@@ -576,9 +576,9 @@ footer.pie .bottom{padding-top:22px;display:flex;justify-content:space-between;f
       <div class="mat-group-h"><span class="dot"></span><b>Aluminio &amp; Vidrio</b></div>
       <div class="mat-grid">
         <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/></svg></div><h3>Ventanas</h3><p>Oscilobatiente, soufflet, proyectada, batiente y paño fijo.</p><ul><li>Aluminio</li><li>Templado</li><li>Laminado</li></ul></div>
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M15 12h.5"/></svg></div><h3>Puertas</h3><p>Puertas batientes de aluminio y la línea Titán de alta seguridad.</p><ul><li>Aluminio</li><li>Titán</li><li>Vidrio</li></ul></div>
+        <div class="mat glass reveal" data-prod="puertas"><div class="mi"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M15 12h.5"/></svg></div><h3>Puertas</h3><p>Puertas batientes de aluminio y la línea Titán de alta seguridad.</p><ul><li>Aluminio</li><li>Titán</li><li>Vidrio</li></ul></div>
         <div class="mat glass reveal" data-prod="correderas"><div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M12 4v16"/><path d="M7 20l5-5 5 5"/></svg></div><h3>Correderas</h3><p>Tres series (E70 · E100 · E200), de 2 a 6 hojas.</p><ul><li>3 series</li><li>2–6 hojas</li><li>Balconeras</li></ul></div>
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3z"/><path d="M7 4v16M11 4v16M15 4v16"/></svg></div><h3>Plegables</h3><p>Puertas plegables E63 que abren el vano por completo.</p><ul><li>Plegable E63</li><li>Panorámico</li></ul></div>
+        <div class="mat glass reveal" data-prod="plegables"><div class="mi"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3z"/><path d="M7 4v16M11 4v16M15 4v16"/></svg></div><h3>Plegables</h3><p>Puertas plegables E63 que abren el vano por completo.</p><ul><li>Plegable E63</li><li>Panorámico</li></ul></div>
         <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 4l16 16"/></svg></div><h3>Vidrios &amp; Mamparas</h3><p>Paños fijos, mamparas y divisiones de vidrio.</p><ul><li>Fijo</li><li>Mampara</li></ul></div>
         <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><circle cx="16" cy="12" r="1"/><path d="M7 3v18"/></svg></div><h3>Vidrio de ducha</h3><p>Cerramientos templados: fijos, puertas y deslizantes.</p><ul><li>Templado</li><li>Sin marco</li></ul></div>
         <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 8v10M21 8v10M7 8v10M11 8v10M15 8v10M19 8v10M3 18h18"/></svg></div><h3>Barandas</h3><p>Barandas de vidrio y aluminio para balcones y escaleras.</p><ul><li>Vidrio</li><li>Pasamanos</li></ul></div>
@@ -878,6 +878,26 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
          sub:'Sistema europeo de alta calidad para ventanas y puertas correderas. Elegancia y altas prestaciones: nuestro producto premium en correderas.',
          ficha:[['Dimensiones máximas','1.250 × 2.500 mm (an × al)'],['Espesor de perfilería','1.5 – 1.7 mm'],['Acristalamiento','5 – 20 mm'],['Configuraciones','2, 3, 4 y 6 hojas']]}
       ]
+    },
+    puertas:{
+      cat:'Puertas',
+      intro:'Puertas batientes de aluminio y nuestra línea Titán de alta seguridad.',
+      acabados:['Blanco','Negro','Natural','Beige','Madera','Antracita'],
+      aperturas:['1 hoja — exterior o interior, izquierda o derecha','2 hojas — apertura exterior','2 hojas — apertura interior'],
+      feats:['Alta seguridad','Resistencia y durabilidad','Buen aislamiento','A medida'],
+      series:[{id:'Titán',nombre:'Puerta Titán',foto:'productos/puertas/titan.jpg',
+        sub:'Puerta robusta y de alta seguridad, diseñada para ofrecer resistencia, durabilidad y protección, con un diseño sólido y buenos niveles de aislamiento y fiabilidad.',
+        ficha:[['Dimensiones máximas','1.500 × 3.000 mm (an × al)'],['Dimensiones mínimas','620 × 2.000 mm'],['Espesor de perfilería','1.4 – 1.6 mm'],['Acristalamiento','6 – 22 mm']]}]
+    },
+    plegables:{
+      cat:'Plegables',
+      intro:'Sistema de puertas y ventanas plegables que integra interiores y exteriores con amplias aperturas.',
+      acabados:['Blanco','Negro','Natural','Beige','Madera','Antracita'],
+      aperturas:['De 3 a 10 hojas plegables','Plegado a uno o a ambos lados','Opción de puerta de paso integrada'],
+      feats:['Apertura total del vano','Excelente estanqueidad','Funcionamiento fiable','Diseño elegante'],
+      series:[{id:'E63',nombre:'Plegable E63',foto:'productos/plegables/e63.jpg',
+        sub:'Permite amplias aperturas para integrar interiores y exteriores, con excelente estanqueidad, funcionamiento fiable y un diseño seguro, confortable y elegante.',
+        ficha:[['Dimensiones máximas','850 × 3.000 mm por hoja (an × al)'],['Espesor de perfilería','1.7 mm'],['Acristalamiento','5 – 18 mm']]}]
     }
   };
   const modal=document.getElementById('prodModal');
