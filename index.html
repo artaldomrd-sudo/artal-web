@@ -275,6 +275,8 @@ section.pad{padding:84px 0}
 .pm-grid{display:grid;grid-template-columns:.92fr 1.08fr}
 .pm-visual{position:relative;min-height:100%;overflow:hidden;background:linear-gradient(155deg,var(--azul-noche),var(--azul-hondo) 60%,var(--azul));display:flex;flex-direction:column;justify-content:flex-end;color:#fff;padding:28px}
 .pm-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pm-visual.contain{background:linear-gradient(160deg,#f4f7fa,#e7edf3)}
+.pm-visual.contain img{object-fit:contain;padding:7%}
 .pm-visual .ph-note{position:absolute;top:16px;left:16px;z-index:2;font-size:.72rem;font-weight:600;letter-spacing:.05em;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:5px 12px;border-radius:100px}
 .pm-visual .vico{position:relative;z-index:1;width:64px;height:64px;margin-bottom:auto;align-self:center;margin-top:auto;color:rgba(255,255,255,.9)}
 .pm-visual .vico svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.4}
@@ -879,7 +881,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
         {id:'E200',nombre:'Corredera E200',foto:'productos/correderas/e200.jpg',
          sub:'Perfecta para residencias modernas, comercios, hoteles y oficinas que exigen estética contemporánea y rendimiento superior. Elegancia, rendimiento y seguridad.',
          ficha:[['Dimensiones máximas','2.000 × 3.100 mm (an × al)'],['Dimensiones mínimas','600 × 1.000 mm'],['Espesor de perfilería','1.4 – 2 mm'],['Acristalamiento','6 – 23 mm'],['Configuraciones','2, 3, 4 y 6 hojas']]},
-        {id:'E100',nombre:'Corredera E100',foto:'productos/correderas/e100.jpg',
+        {id:'E100',nombre:'Corredera E100',foto:'productos/correderas/e100.jpg',fit:'contain',
          sub:'Diseñada para grandes dimensiones, ideal para puertas balconeras. Admite vidrios de gran espesor para mayor seguridad y prestaciones.',
          ficha:[['Dimensiones máximas','2.000 × 3.100 mm (an × al)'],['Dimensiones mínimas','620 × 1.000 mm'],['Espesor de perfilería','1.8 mm'],['Acristalamiento','6 – 23 mm'],['Configuraciones','2, 3, 4 y 6 hojas']]},
         {id:'E70',nombre:'Corredera E70',foto:'productos/correderas/e70.jpg',
@@ -893,7 +895,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       acabados:['Blanco','Negro','Natural','Beige','Madera','Antracita'],
       aperturas:['1 hoja — exterior o interior, izquierda o derecha','2 hojas — apertura exterior','2 hojas — apertura interior'],
       feats:['Alta seguridad','Resistencia y durabilidad','Buen aislamiento','A medida'],
-      series:[{id:'Titán',nombre:'Puerta Titán',foto:'productos/puertas/titan.jpg',
+      series:[{id:'Titán',nombre:'Puerta Titán',foto:'productos/puertas/titan.jpg',fit:'contain',
         sub:'Puerta robusta y de alta seguridad, diseñada para ofrecer resistencia, durabilidad y protección, con un diseño sólido y buenos niveles de aislamiento y fiabilidad.',
         ficha:[['Dimensiones máximas','1.500 × 3.000 mm (an × al)'],['Dimensiones mínimas','620 × 2.000 mm'],['Espesor de perfilería','1.4 – 1.6 mm'],['Acristalamiento','6 – 22 mm']]}]
     },
@@ -960,6 +962,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const $=id=>document.getElementById(id);
   let cur=null;
   function renderSerie(p,s){
+    $('pmVisual').classList.toggle('contain', s.fit==='contain');
     $('pmVisual').innerHTML=`<img src="${s.foto}" alt="${s.nombre}">`
       + (p.d3?`<button class="pm-3d" id="pm3d">Pruébala en 3D ↓</button>`:'');
     $('pmSerie').textContent=s.nombre;
