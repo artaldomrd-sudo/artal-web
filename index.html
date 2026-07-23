@@ -924,7 +924,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   ];
   const cell=(src,tag,tagClass)=>`<div class="ad-cell"><div class="adbg" style="background-image:url('${src}')"></div><img src="${src}" alt="${tag}" loading="lazy"><span class="ad-tag ${tagClass}">${tag}</span></div>`;
   grid.innerHTML=COMPARACIONES.map(c=>`
-    <div class="ad-item glass reveal">
+    <div class="ad-item glass reveal in">
       <div class="ad-pair">
         ${cell(c.a,c.la,'')}
         <div class="ad-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
@@ -1096,7 +1096,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const $=id=>document.getElementById(id);
   let cur=null, curKey=null;
   // producto -> categoría de la galería de obras (fotos reales)
-  const GALERIA={correderas:'puertas',puertas:'puertas',ventanas:'puertas',plegables:'puertas',mamparas:'mamparas',ducha:'mamparas',barandas:'barandas',muros:'fachadas',shutters:'cortinas',cortinas:'cortinas',toldos:'cortinas',estructuras:'estructuras'};
+  const GALERIA={correderas:'puertas',puertas:'puertas',ventanas:'puertas',plegables:'puertas',mamparas:'mamparas',ducha:'mamparas',barandas:'barandas',muros:'fachadas',shutters:'cortinas',cortinas:'cortinas',toldos:'cortinas',estructuras:'fachadas',espejos:'espejos'};
   function renderSerie(p,s){
     $('pmVisual').innerHTML=`<div class="pm-bg" style="background-image:url('${s.foto}')"></div><img src="${s.foto}" alt="${s.nombre}">`
       + (p.d3?`<button class="pm-3d" id="pm3d">Pruébala en 3D ↓</button>`:'');
