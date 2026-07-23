@@ -295,6 +295,9 @@ section.pad{padding:84px 0}
 .pm-swatches{display:flex;flex-wrap:wrap;gap:10px}
 .pm-sw{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:.68rem;color:var(--gris);font-weight:600}
 .pm-sw .c{width:30px;height:30px;border-radius:8px;border:1px solid rgba(0,0,0,.12);box-shadow:inset 0 1px 1px rgba(255,255,255,.5)}
+.pm-muestras{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:10px}
+.pm-mu{text-align:center;font-size:.64rem;color:var(--gris);font-weight:600;line-height:1.25}
+.pm-mu img{width:100%;aspect-ratio:1/1.5;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,.1);box-shadow:inset 0 1px 1px rgba(255,255,255,.4),0 3px 8px -4px rgba(20,49,75,.4);margin-bottom:4px;display:block}
 .pm-aper{list-style:none;display:grid;gap:6px}
 .pm-aper li{font-size:.84rem;color:var(--tinta);padding-left:18px;position:relative}
 .pm-aper li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:2px;background:var(--amarillo)}
@@ -1002,6 +1005,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       cat:'Paneles PVC',
       intro:'Paneles decorativos en PVC para revestimiento de interiores, resistentes a la humedad.',
       feats:['Resistente a la humedad','Fácil instalación','Variedad de diseños','Bajo mantenimiento'],
+      muestras:[{n:'Blanco',img:'productos/paneles-pvc/colores/p01.jpg'},{n:'Beige',img:'productos/paneles-pvc/colores/p02.jpg'},{n:'Beige textura',img:'productos/paneles-pvc/colores/p03.jpg'},{n:'Pino',img:'productos/paneles-pvc/colores/p04.jpg'},{n:'Caoba',img:'productos/paneles-pvc/colores/p05.jpg'},{n:'Marrón',img:'productos/paneles-pvc/colores/p06.jpg'},{n:'Verde aqua',img:'productos/paneles-pvc/colores/p07.jpg'},{n:'Azul lino',img:'productos/paneles-pvc/colores/p08.jpg'},{n:'Gris',img:'productos/paneles-pvc/colores/p09.jpg'},{n:'Gris grafito',img:'productos/paneles-pvc/colores/p10.jpg'},{n:'Negro',img:'productos/paneles-pvc/colores/p11.jpg'},{n:'Ext. madera',img:'productos/paneles-pvc/colores/p12.jpg'},{n:'Ext. negro',img:'productos/paneles-pvc/colores/p13.jpg'},{n:'Gris mármol',img:'productos/paneles-pvc/colores/p14.jpg'},{n:'Gris mármol claro',img:'productos/paneles-pvc/colores/p15.jpg'},{n:'Gris oscuro',img:'productos/paneles-pvc/colores/p16.jpg'}],
       series:[{id:'Paneles',nombre:'Paneles PVC',foto:'productos/paneles-pvc/panel.jpg',
         sub:'Paneles decorativos en PVC para revestimiento de interiores. Diseño versátil, fácil instalación y excelente durabilidad; resistentes a la humedad y al moho.',
         ficha:[['Tipos','Acanalado 3 y 4 vías, bicolor, muralla, imitación mármol'],['Colores','Madera, gris, negro, blanco, mármol y más'],['Medidas','16, 20 y 22 cm × 290 cm'],['Resistencia','A la humedad y al moho'],['Aplicación','Revestimiento de interiores (muralla también exterior)']]}]
@@ -1010,6 +1014,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       cat:'Pisos PVC',
       intro:'Pisos vinílicos imitación madera: la calidez de la madera con la resistencia del PVC.',
       feats:['Apariencia realista','Resistente a la humedad','Instalación rápida','Más durable que la madera'],
+      muestras:[{n:'Roble',img:'productos/pisos-pvc/colores/f01.jpg'},{n:'Pino',img:'productos/pisos-pvc/colores/f02.jpg'},{n:'Caoba',img:'productos/pisos-pvc/colores/f03.jpg'},{n:'Canela',img:'productos/pisos-pvc/colores/f04.jpg'},{n:'Gris madera',img:'productos/pisos-pvc/colores/f05.jpg'},{n:'Negro ébano',img:'productos/pisos-pvc/colores/f06.jpg'},{n:'Blanco text.',img:'productos/pisos-pvc/colores/f07.jpg'},{n:'Canela ext.',img:'productos/pisos-pvc/colores/f08.jpg'},{n:'Caoba ext.',img:'productos/pisos-pvc/colores/f09.jpg'}],
       series:[{id:'Pisos',nombre:'Pisos PVC imitación madera',foto:'productos/pisos-pvc/pisos.jpg',
         sub:'Pisos en PVC y vinil imitación madera: la estética cálida de la madera natural con la resistencia y practicidad de los materiales modernos.',
         ficha:[['Tipo','Vinílico imitación madera'],['Colores','Roble, pino, caoba, canela, gris, ébano, blanco y más'],['Medidas','19 × 122 cm; exterior 15 × 290 cm'],['Resistencia','A la humedad y al desgaste'],['Aplicación','Interior y exterior']]}]
@@ -1036,7 +1041,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const $=id=>document.getElementById(id);
   let cur=null, curKey=null;
   // producto -> categoría de la galería de obras (fotos reales)
-  const GALERIA={correderas:'puertas',puertas:'puertas',ventanas:'puertas',plegables:'puertas',mamparas:'mamparas',ducha:'mamparas',barandas:'barandas',muros:'fachadas',shutters:'cortinas',cortinas:'cortinas',toldos:'cortinas'};
+  const GALERIA={correderas:'puertas',puertas:'puertas',ventanas:'puertas',plegables:'puertas',mamparas:'mamparas',ducha:'mamparas',barandas:'barandas',muros:'fachadas',shutters:'cortinas',cortinas:'cortinas',toldos:'cortinas',estructuras:'estructuras'};
   function renderSerie(p,s){
     $('pmVisual').innerHTML=`<div class="pm-bg" style="background-image:url('${s.foto}')"></div><img src="${s.foto}" alt="${s.nombre}">`
       + (p.d3?`<button class="pm-3d" id="pm3d">Pruébala en 3D ↓</button>`:'');
@@ -1056,6 +1061,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     let extra='';
     if(p.aperturas){extra+='<div class="lbl">Configuraciones de apertura</div><ul class="pm-aper">'+p.aperturas.map(a=>`<li>${a}</li>`).join('')+'</ul>';}
     if(p.acabados){extra+='<div class="lbl">Acabados disponibles</div><div class="pm-swatches">'+p.acabados.map(a=>`<div class="pm-sw"><span class="c" style="background:${ACAB[a]||'#ccc'}"></span>${a}</div>`).join('')+'</div>';}
+    if(p.muestras){extra+='<div class="lbl">Muestras de color reales</div><div class="pm-muestras">'+p.muestras.map(m=>`<div class="pm-mu"><img src="${m.img}" alt="${m.n}" loading="lazy">${m.n}</div>`).join('')+'</div>';}
     $('pmExtra').innerHTML=extra;
     $('pmFeats').innerHTML=(p.feats||[]).map(f=>`<span>${f}</span>`).join('');
     if(p.tipos){
