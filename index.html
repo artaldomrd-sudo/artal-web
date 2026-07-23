@@ -604,9 +604,9 @@ footer.pie .bottom{padding-top:22px;display:flex;justify-content:space-between;f
     <div class="mat-group">
       <div class="mat-group-h"><span class="dot"></span><b>Cortinas, shutters &amp; toldos</b></div>
       <div class="mat-grid">
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M7 7h10M7 11h10M7 15h10"/></svg></div><h3>Shutters</h3><p>Control de luz, ventilación y privacidad. Motorizados o manuales.</p><ul><li>Motorizado</li><li>Manual</li><li>A medida</li></ul></div>
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><path d="M3 4h18"/><path d="M6 4v13M10 4v13M14 4v13M18 4v13"/><path d="M4 20c1.5-2 3 0 4-1s2.5 1 4 0 2.5 1 4 0 2.5 1 4-1"/></svg></div><h3>Cortinas &amp; rollers</h3><p>Zebra, blackout, visillo, ondas perfectas, venecianas y más.</p><ul><li>Zebra</li><li>Blackout</li><li>Ondas</li></ul></div>
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><path d="M2 4h20l-3 7H5z"/><path d="M5 11v3M9.5 11v3M14 11v3M18.5 11v3"/></svg></div><h3>Toldos</h3><p>Retráctiles, pergolados y punto recto, con sensores de sol y viento.</p><ul><li>Retráctil</li><li>Pergolado</li><li>Motorizado</li></ul></div>
+        <div class="mat glass reveal" data-prod="shutters"><div class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M7 7h10M7 11h10M7 15h10"/></svg></div><h3>Shutters</h3><p>Control de luz, ventilación y privacidad. Motorizados o manuales.</p><ul><li>Motorizado</li><li>Manual</li><li>A medida</li></ul></div>
+        <div class="mat glass reveal" data-prod="cortinas"><div class="mi"><svg viewBox="0 0 24 24"><path d="M3 4h18"/><path d="M6 4v13M10 4v13M14 4v13M18 4v13"/><path d="M4 20c1.5-2 3 0 4-1s2.5 1 4 0 2.5 1 4 0 2.5 1 4-1"/></svg></div><h3>Cortinas &amp; rollers</h3><p>Zebra, blackout, visillo, ondas perfectas, venecianas y más.</p><ul><li>Zebra</li><li>Blackout</li><li>Ondas</li></ul></div>
+        <div class="mat glass reveal" data-prod="toldos"><div class="mi"><svg viewBox="0 0 24 24"><path d="M2 4h20l-3 7H5z"/><path d="M5 11v3M9.5 11v3M14 11v3M18.5 11v3"/></svg></div><h3>Toldos</h3><p>Retráctiles, pergolados y punto recto, con sensores de sol y viento.</p><ul><li>Retráctil</li><li>Pergolado</li><li>Motorizado</li></ul></div>
       </div>
     </div>
 
@@ -965,6 +965,38 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       series:[{id:'Barandas',nombre:'Barandas de vidrio',foto:'obras/barandas-de-vidrio/08.jpg',
         sub:'Barandas de vidrio de seguridad con pasamanos de aluminio, ideales para balcones, escaleras, terrazas y piscinas.',
         ficha:[['Tipo','Baranda de vidrio con o sin pasamanos'],['Vidrio','Templado o laminado de seguridad'],['Espesor','1/2" (12 mm) templado · laminado'],['Fijación','Empotrada, con pinzas/conectores o perfil base'],['Pasamanos','Aluminio (opcional)'],['Aplicación','Balcones, escaleras, terrazas, piscinas']]}]
+    },
+    shutters:{
+      cat:'Shutters',
+      intro:'Shutters a la medida para el control de luz, ventilación y privacidad.',
+      feats:['Motorizado o manual','Control solar y privacidad','Larga vida útil','A medida'],
+      series:[{id:'Shutters',nombre:'Shutters a la medida',foto:'productos/shutters/shutters.jpg',
+        sub:'Solución moderna y elegante para el control de luz, ventilación y privacidad. Materiales resistentes y duraderos, en sistema motorizado o manual.',
+        ficha:[['Operación','Motorizado o manual'],['Función','Control de luz, ventilación y privacidad'],['Material','Resistente, de larga vida útil'],['Aplicación','Residencial y comercial'],['Fabricación','A la medida']]}]
+    },
+    cortinas:{
+      cat:'Cortinas & rollers',
+      intro:'Cortinas y sistemas de control de luz a la medida. Todas en translúcido o blackout, con accionamiento manual o motorizado.',
+      feats:['Manual o motorizado','Translúcido o blackout','100% a medida','Materiales premium'],
+      tipos:[
+        {n:'Rollers',img:'productos/cortinas/rollers.jpg',d:'Cortinas enrollables, la solución de sombreado más popular. Diseño moderno y versátil, en translúcido o blackout.'},
+        {n:'Cortinas Zebra',img:'productos/cortinas/zebra.jpg',d:'Doble capa con franjas opacas y translúcidas; ajusta la luz y la privacidad al ángulo deseado.'},
+        {n:'Ondas perfectas',img:'productos/cortinas/ondas.jpg',d:'Ripple fold: un panel continuo con caída en "S" perfectamente alineada, sin fruncidos.'},
+        {n:'Roman Shades',img:'productos/cortinas/roman.jpg',d:'Se pliegan en secciones horizontales suaves al subir; elegantes y decorativas.'},
+        {n:'Venecianas',img:'productos/cortinas/venecianas.jpg',d:'Lamas orientables hasta 90° para regular luz y privacidad. En madera, PVC o aluminio.'},
+        {n:'Verticales',img:'productos/cortinas/verticales.jpg',d:'Lamas verticales orientables, ideales para grandes ventanales y puertas corredizas.'},
+        {n:'Perma (exterior)',img:'productos/cortinas/perma.jpg',d:'Cortinas para exterior con cable o gancho, resistentes a la brisa; para terrazas y balcones.'}
+      ]
+    },
+    toldos:{
+      cat:'Toldos',
+      intro:'Toldos para exteriores, con opciones de automatización y sensores de sol y viento.',
+      feats:['Automatizables','Sensores de sol y viento','Gran salida','Para exteriores'],
+      tipos:[
+        {n:'Toldo retráctil',img:'productos/toldos/retractil.jpg',d:'Se inclina de 0° a 90°, con salida de hasta 3.60 m. Automatizable con sensores de sol y viento.'},
+        {n:'Toldo pergolado',img:'productos/toldos/pergolado.jpg',d:'Tipo pérgola: refugio elegante que amplía el espacio útil al aire libre.'},
+        {n:'Toldo punto recto',img:'productos/toldos/puntorecto.jpg',d:'Brazo ajustable que modifica el ángulo con precisión; ideal entre paredes.'}
+      ]
     }
   };
   const modal=document.getElementById('prodModal');
@@ -972,7 +1004,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const $=id=>document.getElementById(id);
   let cur=null, curKey=null;
   // producto -> categoría de la galería de obras (fotos reales)
-  const GALERIA={correderas:'puertas',puertas:'puertas',ventanas:'puertas',plegables:'puertas',mamparas:'mamparas',ducha:'mamparas',barandas:'barandas',muros:'fachadas'};
+  const GALERIA={correderas:'puertas',puertas:'puertas',ventanas:'puertas',plegables:'puertas',mamparas:'mamparas',ducha:'mamparas',barandas:'barandas',muros:'fachadas',shutters:'cortinas',cortinas:'cortinas',toldos:'cortinas'};
   function renderSerie(p,s){
     $('pmVisual').innerHTML=`<div class="pm-bg" style="background-image:url('${s.foto}')"></div><img src="${s.foto}" alt="${s.nombre}">`
       + (p.d3?`<button class="pm-3d" id="pm3d">Pruébala en 3D ↓</button>`:'');
