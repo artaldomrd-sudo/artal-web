@@ -614,10 +614,10 @@ footer.pie .bottom{padding-top:22px;display:flex;justify-content:space-between;f
     <div class="mat-group">
       <div class="mat-group-h"><span class="dot"></span><b>Revestimientos &amp; decoración</b></div>
       <div class="mat-grid">
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M8 4v16M13 4v16M18 4v16"/></svg></div><h3>Paneles PVC</h3><p>Decorativos: acanalados, muralla y bicolor. Resistentes a la humedad.</p><ul><li>Acanalado</li><li>Muralla</li></ul></div>
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M3 15h18M9 4v6M16 10v5M9 15v5"/></svg></div><h3>Pisos PVC</h3><p>Pisos vinílicos imitación madera, alta resistencia y fácil instalación.</p><ul><li>Imitación madera</li><li>Resistente</li></ul></div>
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="6"/><path d="M9.5 7.5l1.5 1.5"/></svg></div><h3>Espejos &amp; decoración</h3><p>Espejos con y sin iluminación, y estructuras decorativas a medida.</p><ul><li>Iluminado</li><li>A medida</li></ul></div>
-        <div class="mat glass reveal"><div class="mi"><svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14"/><path d="M4 12h16M12 3v18"/></svg></div><h3>Estructuras en aluminio</h3><p>Estructuras con tubo de aluminio de alta calidad, ligeras y resistentes.</p><ul><li>Tubo aluminio</li><li>Exterior</li></ul></div>
+        <div class="mat glass reveal" data-prod="paneles"><div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M8 4v16M13 4v16M18 4v16"/></svg></div><h3>Paneles PVC</h3><p>Decorativos: acanalados, muralla y bicolor. Resistentes a la humedad.</p><ul><li>Acanalado</li><li>Muralla</li></ul></div>
+        <div class="mat glass reveal" data-prod="pisos"><div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M3 15h18M9 4v6M16 10v5M9 15v5"/></svg></div><h3>Pisos PVC</h3><p>Pisos vinílicos imitación madera, alta resistencia y fácil instalación.</p><ul><li>Imitación madera</li><li>Resistente</li></ul></div>
+        <div class="mat glass reveal" data-prod="espejos"><div class="mi"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="6"/><path d="M9.5 7.5l1.5 1.5"/></svg></div><h3>Espejos &amp; decoración</h3><p>Espejos con y sin iluminación, y estructuras decorativas a medida.</p><ul><li>Iluminado</li><li>A medida</li></ul></div>
+        <div class="mat glass reveal" data-prod="estructuras"><div class="mi"><svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14"/><path d="M4 12h16M12 3v18"/></svg></div><h3>Estructuras en aluminio</h3><p>Estructuras con tubo de aluminio de alta calidad, ligeras y resistentes.</p><ul><li>Tubo aluminio</li><li>Exterior</li></ul></div>
       </div>
     </div>
 
@@ -776,7 +776,7 @@ footer.pie .bottom{padding-top:22px;display:flex;justify-content:space-between;f
         <div class="pm-actions">
           <button class="pm-cta2" id="pmGal">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            Ver fotos reales
+            Ver realizaciones
           </button>
           <button class="pm-cta" id="pmCta">Solicitar cotización
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -997,6 +997,38 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
         {n:'Toldo pergolado',img:'productos/toldos/pergolado.jpg',d:'Tipo pérgola: refugio elegante que amplía el espacio útil al aire libre.'},
         {n:'Toldo punto recto',img:'productos/toldos/puntorecto.jpg',d:'Brazo ajustable que modifica el ángulo con precisión; ideal entre paredes.'}
       ]
+    },
+    paneles:{
+      cat:'Paneles PVC',
+      intro:'Paneles decorativos en PVC para revestimiento de interiores, resistentes a la humedad.',
+      feats:['Resistente a la humedad','Fácil instalación','Variedad de diseños','Bajo mantenimiento'],
+      series:[{id:'Paneles',nombre:'Paneles PVC',foto:'productos/paneles-pvc/panel.jpg',
+        sub:'Paneles decorativos en PVC para revestimiento de interiores. Diseño versátil, fácil instalación y excelente durabilidad; resistentes a la humedad y al moho.',
+        ficha:[['Tipos','Acanalado 3 y 4 vías, bicolor, muralla, imitación mármol'],['Colores','Madera, gris, negro, blanco, mármol y más'],['Medidas','16, 20 y 22 cm × 290 cm'],['Resistencia','A la humedad y al moho'],['Aplicación','Revestimiento de interiores (muralla también exterior)']]}]
+    },
+    pisos:{
+      cat:'Pisos PVC',
+      intro:'Pisos vinílicos imitación madera: la calidez de la madera con la resistencia del PVC.',
+      feats:['Apariencia realista','Resistente a la humedad','Instalación rápida','Más durable que la madera'],
+      series:[{id:'Pisos',nombre:'Pisos PVC imitación madera',foto:'productos/pisos-pvc/pisos.jpg',
+        sub:'Pisos en PVC y vinil imitación madera: la estética cálida de la madera natural con la resistencia y practicidad de los materiales modernos.',
+        ficha:[['Tipo','Vinílico imitación madera'],['Colores','Roble, pino, caoba, canela, gris, ébano, blanco y más'],['Medidas','19 × 122 cm; exterior 15 × 290 cm'],['Resistencia','A la humedad y al desgaste'],['Aplicación','Interior y exterior']]}]
+    },
+    espejos:{
+      cat:'Espejos & decoración',
+      intro:'Espejos y estructuras decorativas de alta calidad, con y sin iluminación.',
+      feats:['Con o sin iluminación','Diseños a medida','Acabados precisos','A medida'],
+      series:[{id:'Espejos',nombre:'Espejos & decoración',foto:'productos/espejos/espejo.jpg',
+        sub:'Espejos y estructuras decorativas de alta calidad, combinando diseño, funcionalidad y acabados precisos, para realzar espacios residenciales y comerciales.',
+        ficha:[['Tipos','Con iluminación, lisos, con diseño y estructuras decorativas'],['Iluminación','Con o sin luz LED'],['Diseño','Formas y grabados a la medida'],['Acabados','Precisos, de alta calidad'],['Aplicación','Residencial y comercial']]}]
+    },
+    estructuras:{
+      cat:'Estructuras en aluminio',
+      intro:'Soluciones estructurales modernas y resistentes en tubo de aluminio de alta calidad.',
+      feats:['Alta resistencia','Resistente a la intemperie','Ligero','Bajo mantenimiento'],
+      series:[{id:'Estructuras',nombre:'Estructuras en aluminio',foto:'productos/estructuras/estructura.jpg',
+        sub:'Soluciones estructurales modernas y resistentes, fabricadas con tubos de aluminio de alta calidad, para proyectos residenciales y comerciales.',
+        ficha:[['Material','Tubo de aluminio de alta calidad'],['Resistencia','Alta; a la corrosión y la intemperie'],['Peso','Ligero, de fácil instalación'],['Mantenimiento','Bajo'],['Aplicación','Residencial y comercial, interior y exterior']]}]
     }
   };
   const modal=document.getElementById('prodModal');
@@ -1017,6 +1049,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   function open(key){
     const p=PRODUCTOS[key]; if(!p) return; cur=p; curKey=key;
     const card=$('pmCard');
+    $('pmGal').style.display = GALERIA[key] ? '' : 'none';
     $('pmCat').textContent=p.cat;
     $('pmIntro').textContent=p.intro||'';
     // extras comunes (aperturas + acabados)
