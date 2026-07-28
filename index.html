@@ -792,6 +792,12 @@ body.no-hist .hero{padding-top:112px}
   </div>
 </section>
 
+<style>
+.tipos-check{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tipos-check label{display:inline-flex;align-items:center;gap:7px;font-family:'Inter',sans-serif;font-size:.9rem;color:#16222C;background:rgba(255,255,255,.55);border:1.5px solid rgba(18,49,75,.18);border-radius:100px;padding:8px 14px;cursor:pointer;transition:.15s;user-select:none}
+.tipos-check label:has(input:checked){background:#12314B;color:#fff;border-color:#12314B}
+.tipos-check input{accent-color:#F2C200;width:16px;height:16px;cursor:pointer}
+</style>
 <!-- CONTACTO -->
 <section class="pad contacto" id="contacto">
   <div class="wrap">
@@ -814,14 +820,25 @@ body.no-hist .hero{padding-top:112px}
           <div class="field"><label for="tel">Teléfono</label><input id="tel" placeholder="809-000-0000"></div>
         </div>
         <div class="field"><label for="email">Correo</label><input id="email" type="email" placeholder="correo@ejemplo.com"></div>
-        <div class="field"><label for="tipo">¿Qué necesitas?</label>
-          <select id="tipo"><option>Ventanas</option><option>Puertas</option><option>Correderas</option><option>Galandajes</option><option>Vidrio de ducha</option><option>Barandas</option><option>Fachada</option><option>Otro</option></select>
+        <div class="field"><label>¿Qué necesitas? <span style="font-weight:400;opacity:.65">(elige una o varias)</span></label>
+          <div class="tipos-check" id="tipos">
+            <label><input type="checkbox" value="Ventanas">Ventanas</label>
+            <label><input type="checkbox" value="Puertas">Puertas</label>
+            <label><input type="checkbox" value="Correderas">Correderas</label>
+            <label><input type="checkbox" value="Galandajes">Galandajes</label>
+            <label><input type="checkbox" value="Vidrio de ducha">Vidrio de ducha</label>
+            <label><input type="checkbox" value="Barandas">Barandas</label>
+            <label><input type="checkbox" value="Fachada">Fachada</label>
+            <label><input type="checkbox" value="Otro">Otro</label>
+          </div>
         </div>
         <div class="field"><label for="msg">Detalles del proyecto</label><textarea id="msg" placeholder="Ubicación, cantidad de piezas, medidas aproximadas..."></textarea></div>
+        <!-- Campo trampa anti-spam ("honeypot"): invisible para personas; si un bot lo llena, se descarta la solicitud. -->
+        <input type="text" id="empresa-web" name="empresa-web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0">
         <button type="submit" class="btn btn-primario">Enviar solicitud
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
         </button>
-        <small>Al enviar se abrirá tu correo con la solicitud lista para nosotros.</small>
+        <small>Te responderemos lo antes posible con una propuesta a tu medida.</small>
       </form>
     </div>
   </div>
@@ -1350,14 +1367,90 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   });
 })();
 
+// El envío real lo maneja el módulo Firebase de abajo (window.enviarSolicitud). Si por lo que sea
+// ese módulo no cargó (sin conexión al CDN, etc.), este respaldo abre el correo como antes para
+// no perder al cliente.
+// Los productos son casillas (se puede elegir varios): se juntan en un texto ("Ventanas, Puertas").
+// Global para que lo usen tanto este respaldo como el módulo Firebase de abajo.
+function tiposSeleccionados(){
+  return Array.from(document.querySelectorAll('#tipos input:checked')).map(c=>c.value).join(', ');
+}
 function enviar(e){
+  if(window.enviarSolicitud) return window.enviarSolicitud(e);
   e.preventDefault();
   const g=id=>document.getElementById(id).value.trim();
-  const cuerpo=`Nombre: ${g('nombre')}\nTeléfono: ${g('tel')}\nCorreo: ${g('email')}\nProducto: ${g('tipo')}\n\nDetalles:\n${g('msg')}`;
-  const asunto=`Solicitud de cotización — ${g('tipo')} — ${g('nombre')}`;
+  const tipo=tiposSeleccionados();
+  const cuerpo=`Nombre: ${g('nombre')}\nTeléfono: ${g('tel')}\nCorreo: ${g('email')}\nProducto: ${tipo}\n\nDetalles:\n${g('msg')}`;
+  const asunto=`Solicitud de cotización — ${tipo} — ${g('nombre')}`;
   location.href=`mailto:artaldom.rd@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
   return false;
 }
+</script>
+
+<!-- Conexión con la plataforma (Firebase): el formulario de contacto guarda la solicitud en la
+     colección `solicitudesWeb`, que aparece en el Panel de Control con aviso y notificación. Las
+     claves de esta config son públicas por diseño (es normal tenerlas en el cliente); las reglas
+     de Firestore solo permiten CREAR una solicitud desde aquí, nunca leer datos de la operación. -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+const app = initializeApp({
+  apiKey: "AIzaSyAuEq8dewRrmpY-N9N0w6gz5bkj98qDBlE",
+  authDomain: "artal-operaciones.firebaseapp.com",
+  projectId: "artal-operaciones",
+  storageBucket: "artal-operaciones.firebasestorage.app",
+  messagingSenderId: "289748131568",
+  appId: "1:289748131568:web:bcf0b5122d529ac399ac35"
+});
+const db = getFirestore(app);
+
+function mostrarGracias(){
+  const form = document.getElementById('form');
+  if(!form) return;
+  form.innerHTML = `<div style="text-align:center;padding:20px 6px">
+    <div style="font-size:2.4rem;line-height:1">✅</div>
+    <h3 style="font-family:'Archivo',sans-serif;color:#12314B;margin:.5rem 0 .3rem">¡Solicitud enviada!</h3>
+    <p style="font-family:'Inter',sans-serif;color:#4b5b68;margin:0">Gracias por escribirnos. Te contactaremos lo antes posible con una propuesta a tu medida.</p>
+  </div>`;
+}
+
+window.enviarSolicitud = async function(e){
+  e.preventDefault();
+  const g = id => (document.getElementById(id)?.value || '').trim();
+  const nombre = g('nombre');
+  if(!nombre){ alert('Escribe tu nombre.'); return false; }
+
+  // Honeypot: si viene lleno, es un bot. Fingimos éxito y no guardamos nada.
+  if(g('empresa-web')){ mostrarGracias(); return false; }
+
+  const tipo = (window.tiposSeleccionados ? window.tiposSeleccionados() : '');
+  const datos = {
+    origen: 'web',
+    estado: 'nueva',
+    nombre,
+    telefono: g('tel'),
+    email: g('email'),
+    tipo,
+    mensaje: g('msg'),
+    fecha: serverTimestamp()
+  };
+
+  const btn = document.querySelector('#form button[type="submit"]');
+  const txt = btn ? btn.innerHTML : '';
+  if(btn){ btn.disabled = true; btn.innerHTML = 'Enviando…'; }
+  try {
+    await addDoc(collection(db, 'solicitudesWeb'), datos);
+    mostrarGracias();
+  } catch(err){
+    // Respaldo: abrir WhatsApp con la solicitud lista, para no perder al cliente si falla la red.
+    const wa = `https://wa.me/18492606106?text=` + encodeURIComponent(
+      `Hola, soy ${nombre}. Quiero una cotización de ${tipo || 'sus productos'}.\n${g('msg')}\nTel: ${g('tel')} · Correo: ${g('email')}`);
+    window.open(wa, '_blank');
+    if(btn){ btn.disabled = false; btn.innerHTML = txt; }
+  }
+  return false;
+};
 </script>
 
 <!-- Aviso de cookies -->
