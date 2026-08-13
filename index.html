@@ -124,7 +124,7 @@ header.nav .brand img{height:38px;width:auto}
 header.nav .brand b{font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:var(--azul-noche);letter-spacing:.01em}
 header.nav .brand b i{color:var(--amarillo-hondo);font-style:normal}
 header.nav nav{display:flex;align-items:center;gap:28px}
-header.nav nav a{font-weight:600;font-size:.93rem;color:var(--azul-noche);opacity:.82;position:relative;padding:4px 0;transition:.2s}
+header.nav nav a{font-weight:600;font-size:.93rem;color:var(--azul-noche);opacity:.82;position:relative;padding:4px 0;transition:.2s;white-space:nowrap}
 header.nav nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--amarillo);transition:.25s;border-radius:2px}
 header.nav nav a:hover{opacity:1}
 header.nav nav a:hover::after{width:100%}
@@ -221,6 +221,12 @@ section.pad{padding:84px 0}
 .card-obra h3{font-size:1.24rem;margin-bottom:2px}
 .card-obra .count{font-size:.84rem;color:rgba(255,255,255,.82);display:inline-flex;align-items:center;gap:6px}
 .card-obra .count svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.card-volver{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:8px;font-family:'Archivo',sans-serif;font-weight:700;font-size:.9rem;color:var(--azul-noche);background:var(--glass-strong);border:1px solid var(--glass-brd);border-radius:100px;padding:10px 18px;cursor:pointer;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:inset 0 1px 1px rgba(255,255,255,.6);margin-bottom:2px;transition:.2s}
+.card-volver:hover{color:var(--azul);transform:translateX(-2px)}
+.card-volver svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2}
+.obra-group-h{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin:18px 0 2px;font-family:'Archivo',sans-serif;font-weight:800;font-size:1.05rem;color:var(--azul-noche)}
+.obra-group-h .dot{width:8px;height:8px;border-radius:2px;background:var(--amarillo);flex:0 0 auto}
+.obra-group-h::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(20,49,75,.14),transparent)}
 .obra-note{margin-top:26px;text-align:center;color:var(--gris);font-size:.92rem}
 
 /* ---------- ANTES / DESPUÉS ---------- */
@@ -542,6 +548,40 @@ body.no-hist .hero{padding-top:112px}
   .obra-grid{grid-template-columns:1fr;gap:16px}
   .stats .bar{grid-template-columns:1fr 1fr}
 }
+
+/* ---------- LÍNEA CLAROFLEX (co-branding) ---------- */
+#claroflex{position:relative}
+.cf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:8px}
+.cf-card{border-radius:var(--radio);overflow:hidden;display:flex;flex-direction:column;transition:.3s cubic-bezier(.2,.8,.3,1)}
+.cf-card[data-prod]{cursor:pointer}
+.cf-card:hover{transform:translateY(-5px)}
+.cf-img{position:relative;aspect-ratio:3/2;background:#e6edf3;overflow:hidden;border-bottom:1px solid var(--glass-brd)}
+.cf-img img{width:100%;height:100%;object-fit:cover;display:block}
+.cf-tag{position:absolute;z-index:2;top:14px;left:14px;font-family:'Archivo',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--azul-noche);padding:6px 12px;border-radius:100px;box-shadow:0 4px 12px -4px rgba(20,49,75,.5)}
+.cf-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.cf-body h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.28rem;color:var(--azul-noche);margin:0 0 8px}
+.cf-body>p{color:var(--gris);font-size:.96rem;line-height:1.55;margin:0 0 16px}
+.cf-specs{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:9px}
+.cf-specs li{display:flex;justify-content:space-between;gap:14px;font-size:.9rem;padding-bottom:9px;border-bottom:1px solid rgba(20,49,75,.1)}
+.cf-specs li span{color:var(--gris)}
+.cf-specs li b{color:var(--azul-noche);font-weight:700;text-align:right}
+.cf-ficha{margin-top:auto;width:100%;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Archivo',sans-serif;font-weight:700;font-size:.9rem;color:var(--azul-noche);background:linear-gradient(180deg,#ffd634,var(--amarillo));padding:13px 18px;border-radius:12px;transition:.22s;box-shadow:0 8px 20px -12px rgba(20,49,75,.5)}
+.cf-ficha:hover{filter:brightness(1.04);transform:translateY(-1px)}
+.cf-ficha svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2}
+.cf-note{margin-top:26px;font-size:.86rem;color:var(--gris);text-align:center}
+/* enganche premium en el hero */
+.hero-premium{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;padding:9px 16px;border-radius:100px;
+  font-family:'Archivo',sans-serif;font-weight:700;font-size:.82rem;color:var(--azul-noche);
+  background:linear-gradient(180deg,rgba(255,214,52,.22),rgba(242,194,0,.16));border:1px solid rgba(242,194,0,.55);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.5);transition:.2s}
+.hero-premium:hover{background:linear-gradient(180deg,rgba(255,214,52,.32),rgba(242,194,0,.24));transform:translateY(-1px)}
+.hero-premium .hp-star{color:var(--amarillo-hondo);font-size:.95rem}
+.hero-premium b{color:var(--azul-hondo)}
+.hero-premium svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.4}
+/* acento dorado del ítem de menú */
+header.nav nav a.nav-premium{color:var(--amarillo-hondo);font-weight:800}
+header.nav nav a.nav-premium::after{background:var(--amarillo)}
+header.nav nav a.nav-premium .hp-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amarillo);margin-right:6px;vertical-align:middle;box-shadow:0 0 0 3px rgba(242,194,0,.2)}
 </style>
 </head>
 <body>
@@ -560,6 +600,7 @@ body.no-hist .hero{padding-top:112px}
     <nav id="menu">
       <a href="#obra">Proyectos</a>
       <a href="#materiales">Materiales</a>
+      <a href="#claroflex" class="nav-premium"><span class="hp-dot"></span>Cortinas de cristal</a>
       <a href="#proceso">Proceso</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#contacto" class="cta-nav">Contáctanos</a>
@@ -585,6 +626,9 @@ body.no-hist .hero{padding-top:112px}
 <section class="hero" id="inicio">
   <div class="wrap">
     <div class="hero-card glass reveal in">
+      <a href="#claroflex" class="hero-premium"><span class="hp-star">✦</span> Nuevo · <b>Cortinas de cristal</b> ClaroFlex
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
       <span class="eyebrow">Aluminio &amp; Vidrio · Rep. Dominicana</span>
       <h1>Transformamos espacios con <span class="hl">aluminio y vidrio</span> de precisión</h1>
       <p class="lead">Diseñamos, fabricamos e instalamos ventanas, puertas, correderas, fachadas y cerramientos a la medida — con acabados de nivel arquitectónico.</p>
@@ -676,6 +720,72 @@ body.no-hist .hero{padding-top:112px}
   </div>
 </section>
 
+<!-- LÍNEA CLAROFLEX -->
+<section class="pad" id="claroflex">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Cortinas de cristal</span>
+      <h2>Sistemas de cristal ClaroFlex</h2>
+      <p>Cerramientos de cristal europeos de alta gama, para integrar terrazas, balcones y espacios comerciales sin perder la vista. ARTAL es tu representante e instalador autorizado en República Dominicana.</p>
+    </div>
+
+    <div class="cf-grid">
+      <!-- Corredera Slide -->
+      <article class="cf-card glass reveal" data-prod="cf-slide">
+        <div class="cf-img"><span class="cf-tag">Corredera</span><img src="productos/claroflex/portadaslide.jpg" onerror="this.onerror=null;this.src='productos/claroflex/slide.jpeg'" alt="Corredera de cristal Slide sin montantes" loading="lazy"></div>
+        <div class="cf-body">
+          <h3>Corredera Slide</h3>
+          <p>Corredera de cristal sin montantes: los paneles se deslizan y se recogen a un lado dejando el vano totalmente despejado. Peso apoyado en el carril inferior para máxima estabilidad.</p>
+          <ul class="cf-specs">
+            <li><span>Altura máxima</span><b>3.300 mm</b></li>
+            <li><span>Peso por panel</span><b>hasta 150 kg</b></li>
+            <li><span>Aislamiento térmico</span><b>5,6 W/m²K</b></li>
+            <li><span>Aislamiento acústico</span><b>34 dB</b></li>
+            <li><span>Extensiones</span><b>ilimitadas</b></li>
+          </ul>
+          <button type="button" class="cf-ficha"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>Ver ficha técnica</button>
+        </div>
+      </article>
+
+      <!-- Cortina de Cristal Pivot -->
+      <article class="cf-card glass reveal" data-prod="cf-pivot">
+        <div class="cf-img"><span class="cf-tag">Cortina de cristal</span><img src="productos/claroflex/portadapivot.jpg" onerror="this.onerror=null;this.src='productos/claroflex/pivot.jpeg'" alt="Cortina de cristal Pivot" loading="lazy"></div>
+        <div class="cf-body">
+          <h3>Cortina de Cristal Pivot</h3>
+          <p>Paneles de vidrio que pivotan y se apilan a un lado, con giro de 90° hasta 270° y opción de tramos en ángulo. Sin taladros en el vidrio y sin rodamientos que mantener.</p>
+          <ul class="cf-specs">
+            <li><span>Altura máxima</span><b>3.200 mm</b></li>
+            <li><span>Paneles por vano</span><b>hasta 18</b></li>
+            <li><span>Giro de paneles</span><b>90° – 270°</b></li>
+            <li><span>Vidrio</span><b>templado / laminado</b></li>
+            <li><span>Garantía</span><b>5 años</b></li>
+          </ul>
+          <button type="button" class="cf-ficha"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>Ver ficha técnica</button>
+        </div>
+      </article>
+
+      <!-- Cristal Duo -->
+      <article class="cf-card glass reveal" data-prod="cf-duo">
+        <div class="cf-img"><span class="cf-tag">Cristal con cámara</span><img src="productos/claroflex/portadaduo.jpg" onerror="this.onerror=null;this.src='productos/claroflex/duo.jpeg'" alt="Cristal Duo — cortina de cristal con doble acristalamiento" loading="lazy"></div>
+        <div class="cf-body">
+          <h3>Cristal Duo</h3>
+          <p>Cortina de cristal con doble acristalamiento (vidrio de cámara): los paneles se deslizan y se recogen a un lado. La cámara de aire le da el mejor aislamiento térmico y acústico de la gama.</p>
+          <ul class="cf-specs">
+            <li><span>Altura máxima</span><b>2.600 mm</b></li>
+            <li><span>Vidrio de cámara</span><b>hasta 28 mm</b></li>
+            <li><span>Aislamiento acústico</span><b>32 dB</b></li>
+            <li><span>Cierre lateral</span><b>180°</b></li>
+            <li><span>Peso por panel</span><b>hasta 45 kg</b></li>
+          </ul>
+          <button type="button" class="cf-ficha"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg>Ver ficha técnica</button>
+        </div>
+      </article>
+    </div>
+
+    <p class="cf-note">¿Te interesa alguno de estos sistemas? <a href="#contacto" style="color:var(--azul-hondo);font-weight:700">Escríbenos</a> y te asesoramos con la medida y el acabado para tu espacio.</p>
+  </div>
+</section>
+
 <!-- MATERIALES -->
 <section class="pad" id="materiales">
   <div class="wrap">
@@ -714,8 +824,6 @@ body.no-hist .hero{padding-top:112px}
     <div class="mat-group">
       <div class="mat-group-h"><span class="dot"></span><b>Revestimientos &amp; decoración</b></div>
       <div class="mat-grid">
-        <div class="mat glass reveal" data-prod="paneles"><div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M8 4v16M13 4v16M18 4v16"/></svg></div><h3>Paneles PVC</h3><p>Decorativos: acanalados, muralla y bicolor. Resistentes a la humedad.</p><ul><li>Acanalado</li><li>Muralla</li></ul></div>
-        <div class="mat glass reveal" data-prod="pisos"><div class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M3 15h18M9 4v6M16 10v5M9 15v5"/></svg></div><h3>Pisos PVC</h3><p>Pisos vinílicos imitación madera, alta resistencia y fácil instalación.</p><ul><li>Imitación madera</li><li>Resistente</li></ul></div>
         <div class="mat glass reveal" data-prod="espejos"><div class="mi"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="6"/><path d="M9.5 7.5l1.5 1.5"/></svg></div><h3>Espejos &amp; decoración</h3><p>Espejos con y sin iluminación, y estructuras decorativas a medida.</p><ul><li>Iluminado</li><li>A medida</li></ul></div>
         <div class="mat glass reveal" data-prod="estructuras"><div class="mi"><svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14"/><path d="M4 12h16M12 3v18"/></svg></div><h3>Estructuras en aluminio</h3><p>Estructuras con tubo de aluminio de alta calidad, ligeras y resistentes.</p><ul><li>Tubo aluminio</li><li>Exterior</li></ul></div>
       </div>
@@ -756,7 +864,7 @@ body.no-hist .hero{padding-top:112px}
             <div class="wd-open"></div>
             <div class="wd-sash wd-fixed" id="wdFixed"><div class="wd-glass"></div><div class="wd-handle"></div></div>
             <div class="wd-sash wd-slide" id="wdSlide"><div class="wd-glass"></div><div class="wd-handle"></div></div>
-            <div class="wd-badge" id="wdBadge">Antracita</div>
+            <div class="wd-badge" id="wdBadge">Gris grafito</div>
           </div>
         </div>
         <p class="config-hint">↔ Arrastra para girar la ventana</p>
@@ -767,7 +875,7 @@ body.no-hist .hero{padding-top:112px}
         <p>Elige el acabado del perfil y prueba la apertura. Fabricamos cualquier color RAL bajo pedido.</p>
         <div class="config-label">Acabado del perfil</div>
         <div class="finish-row" id="finishRow">
-          <div class="finish on" data-c="#3f4448" data-c2="#2c3033" data-name="Antracita"><span class="sc sc-antracita"></span>Antracita</div>
+          <div class="finish on" data-c="#3f4448" data-c2="#2c3033" data-name="Gris grafito"><span class="sc sc-antracita"></span>Gris grafito</div>
           <div class="finish" data-c="#17191b" data-c2="#0d0e10" data-name="Negro"><span class="sc sc-negro"></span>Negro</div>
           <div class="finish" data-c="#e9edf0" data-c2="#c4cbd0" data-name="Blanco"><span class="sc sc-blanco"></span>Blanco</div>
           <div class="finish" data-c="#c2cace" data-c2="#9aa4ab" data-name="Natural"><span class="sc sc-natural"></span>Natural</div>
@@ -1015,37 +1123,55 @@ document.getElementById('year').textContent=new Date().getFullYear();
   const note = document.getElementById('obra-note');
   if(!grid || !OBRAS.length){ if(note) note.textContent=''; return; }
 
-  // filtros a partir de las categorías presentes (en orden de aparición)
-  const cats=[]; const seen={};
-  OBRAS.forEach(o=>{ if(!seen[o.cat]){ seen[o.cat]=1; cats.push({key:o.cat,label:o.catLabel}); }});
-  const chips=[{key:'todos',label:'Todos'}].concat(cats);
-  let activo='todos';
-  filtros.innerHTML = chips.map(c=>`<button class="chip-f${c.key==='todos'?' on':''}" data-cat="${c.key}">${c.label}</button>`).join('');
+  const OCULTAR = ['decoracion'];                 // retiradas de momento
+  const NOMBRE_OVR = { 'villa-7':'Edificios' };   // renombres
+  const PRINCIPAL = ['villa-1','villa-2','villa-3','villa-4','villa-5','villa-6','villa-7'];
+  const ALL = OBRAS.filter(o=>!OCULTAR.includes(o.slug));
+  const nombreDe = o => NOMBRE_OVR[o.slug] || o.nombre;
+  const bySlug = s => ALL.find(o=>o.slug===s);
+  const principales = PRINCIPAL.map(bySlug).filter(Boolean);
+  const diversas = ALL.filter(o=>!PRINCIPAL.includes(o.slug));
+  filtros.style.display='none';                   // sin filtros con la nueva organización
 
   const camIco='<svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>';
+  const gridIco='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>';
 
+  function obraCard(o){
+    return `<article class="card-obra reveal in" data-slug="${o.slug}">
+      <img class="ph" src="${o.fotos[0]}" alt="${nombreDe(o)}" loading="lazy">
+      <div class="glass-sheen"></div>
+      <div class="meta">
+        <span class="tag">${o.catLabel}</span>
+        <h3>${nombreDe(o)}</h3>
+        <span class="count">${camIco}${o.n} <span>${o.n===1?'foto':'fotos'}</span></span>
+      </div>
+    </article>`;
+  }
+  function diversasCard(){
+    const cover=(bySlug('fachadas-techos')||diversas[0]).fotos[0];
+    return `<article class="card-obra card-diversas reveal in">
+      <img class="ph" src="${cover}" alt="Realizaciones diversas" loading="lazy">
+      <div class="glass-sheen"></div>
+      <div class="meta">
+        <span class="tag">Más trabajos</span>
+        <h3>Realizaciones diversas</h3>
+        <span class="count">${gridIco}${diversas.length} <span>colecciones</span></span>
+      </div>
+    </article>`;
+  }
+
+  let vista='principal';
   function render(){
-    const lista = OBRAS.filter(o=>activo==='todos'||o.cat===activo);
-    grid.innerHTML = lista.map((o,i)=>{
-      return `<article class="card-obra reveal in" data-slug="${o.slug}">
-        <img class="ph" src="${o.fotos[0]}" alt="${o.nombre}" loading="lazy">
-        <div class="glass-sheen"></div>
-        <div class="meta">
-          <span class="tag">${o.catLabel}</span>
-          <h3>${o.nombre}</h3>
-          <span class="count">${camIco}${o.n} <span>${o.n===1?'foto':'fotos'}</span></span>
-        </div>
-      </article>`;
-    }).join('');
+    if(vista==='diversas'){
+      const grupos=[]; const gs={};
+      diversas.forEach(o=>{ if(gs[o.catLabel]==null){ gs[o.catLabel]=grupos.length; grupos.push({label:o.catLabel,items:[]}); } grupos[gs[o.catLabel]].items.push(o); });
+      grid.innerHTML = `<button type="button" class="card-volver"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Volver a proyectos</button>`
+        + grupos.map(g=>`<div class="obra-group-h"><span class="dot"></span>${g.label}</div>`+g.items.map(obraCard).join('')).join('');
+    } else {
+      grid.innerHTML = principales.map(obraCard).join('') + diversasCard();
+    }
   }
   render();
-
-  filtros.addEventListener('click',e=>{
-    const b=e.target.closest('.chip-f'); if(!b) return;
-    activo=b.dataset.cat;
-    filtros.querySelectorAll('.chip-f').forEach(c=>c.classList.toggle('on',c===b));
-    render();
-  });
 
   /* Lightbox */
   const lb=document.getElementById('lb'), lbImg=document.getElementById('lb-img'),
@@ -1062,8 +1188,11 @@ document.getElementById('year').textContent=new Date().getFullYear();
   function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; lbImg.src=''; }
   function move(d){ idx=(idx+d+fotos.length)%fotos.length; show(); }
 
-  grid.addEventListener('click',e=>{ const c=e.target.closest('.card-obra'); if(!c) return;
-    const o=OBRAS.find(x=>x.slug===c.dataset.slug); if(o) open(o); });
+  grid.addEventListener('click',e=>{
+    if(e.target.closest('.card-volver')){ vista='principal'; render(); document.getElementById('obra').scrollIntoView({behavior:'smooth',block:'start'}); return; }
+    if(e.target.closest('.card-diversas')){ vista='diversas'; render(); document.getElementById('obra').scrollIntoView({behavior:'smooth',block:'start'}); return; }
+    const c=e.target.closest('.card-obra'); if(!c) return;
+    const o=ALL.find(x=>x.slug===c.dataset.slug); if(o) open(o); });
   document.getElementById('lb-close').onclick=close;
   document.getElementById('lb-prev').onclick=()=>move(-1);
   document.getElementById('lb-next').onclick=()=>move(1);
@@ -1105,13 +1234,13 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* ---------- FICHAS DE PRODUCTO ---------- */
 (function(){
-  const ACAB={'Blanco':'#eef1f3','Negro':'#1a1c1e','Natural':'#c9d0d6','Beige':'#cdbfa3','Madera':'#b07a44','Antracita':'#3f4448'};
+  const ACAB={'Blanco':'#eef1f3','Negro':'#1a1c1e','Natural':'#c9d0d6','Anodizado inox':'#c5bda4','Madera':'#b07a44','Gris grafito':'#474c51'};
   const PRODUCTOS={
     correderas:{
       cat:'Correderas',
       intro:'Sistemas de correderas de aluminio y vidrio, de 2 a 6 hojas. Tres series según el tamaño, las prestaciones y el presupuesto de tu proyecto.',
       d3:true,
-      acabados:['Blanco','Negro','Natural','Beige','Madera','Antracita'],
+      acabados:['Blanco','Negro','Natural','Anodizado inox','Madera','Gris grafito'],
       aperturas:['2 hojas — desplazamiento opuesto','3 hojas — laterales hacia el centro y central bidireccional','4 hojas — dos pares opuestos','6 hojas — desplazamiento alterno cruzado'],
       feats:['Hasta 6 hojas','Vidrio hasta 23 mm','6 acabados','Grandes dimensiones'],
       series:[
@@ -1129,7 +1258,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     puertas:{
       cat:'Puertas',
       intro:'Puertas batientes de aluminio y nuestra línea Titán de alta seguridad.',
-      acabados:['Blanco','Negro','Natural','Beige','Madera','Antracita'],
+      acabados:['Blanco','Negro','Natural','Anodizado inox','Madera','Gris grafito'],
       aperturas:['1 hoja — exterior o interior, izquierda o derecha','2 hojas — apertura exterior','2 hojas — apertura interior'],
       feats:['Alta seguridad','Resistencia y durabilidad','Buen aislamiento','A medida'],
       series:[{id:'Titán',nombre:'Puerta Titán',foto:'productos/puertas/titan.jpg',fit:'contain',
@@ -1139,7 +1268,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     plegables:{
       cat:'Plegables',
       intro:'Sistema de puertas y ventanas plegables que integra interiores y exteriores con amplias aperturas.',
-      acabados:['Blanco','Negro','Natural','Beige','Madera','Antracita'],
+      acabados:['Blanco','Negro','Natural','Anodizado inox','Madera','Gris grafito'],
       aperturas:['De 3 a 10 hojas plegables','Plegado a uno o a ambos lados','Opción de puerta de paso integrada'],
       feats:['Apertura total del vano','Excelente estanqueidad','Funcionamiento fiable','Diseño elegante'],
       series:[{id:'E63',nombre:'Plegable E63',foto:'productos/plegables/e63.jpg',
@@ -1149,7 +1278,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     ventanas:{
       cat:'Ventanas',
       intro:'Fabricamos ventanas de aluminio y vidrio en todos los tipos de apertura, a la medida de tu proyecto.',
-      acabados:['Blanco','Negro','Natural','Beige','Madera','Antracita'],
+      acabados:['Blanco','Negro','Natural','Anodizado inox','Madera','Gris grafito'],
       feats:['Aislamiento térmico y acústico','Vidrio templado o laminado','6 acabados','A medida'],
       tipos:[
         {n:'Oscilobatiente',img:'productos/ventanas/oscilobatiente.jpg',d:'Se abre de forma lateral como una ventana tradicional o se inclina desde arriba para ventilar sin abrirla por completo. Práctica, segura y con buen aislamiento.'},
@@ -1163,7 +1292,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     muros:{
       cat:'Muros cortina & Fachadas',
       intro:'Muros cortina y fachadas acristaladas a gran escala, para grandes superficies y esquinas.',
-      acabados:['Blanco','Negro','Natural','Beige','Madera','Antracita'],
+      acabados:['Blanco','Negro','Natural','Anodizado inox','Madera','Gris grafito'],
       feats:['Grandes superficies','Esquinas acristaladas','Rejillas de ventilación','Paneles a medida'],
       series:[{id:'Muro cortina',nombre:'Muro cortina',foto:'productos/muro-cortina/muro.jpg',
         sub:'Sistema de fachada acristalada a gran escala, con montantes de aluminio y paneles de vidrio, ideal para grandes superficies y esquinas.',
@@ -1258,6 +1387,33 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       series:[{id:'Estructuras',nombre:'Estructuras en aluminio',foto:'productos/estructuras/estructura.jpg',
         sub:'Soluciones estructurales modernas y resistentes, fabricadas con tubos de aluminio de alta calidad, para proyectos residenciales y comerciales.',
         ficha:[['Material','Tubo de aluminio de alta calidad'],['Resistencia','Alta; a la corrosión y la intemperie'],['Peso','Ligero, de fácil instalación'],['Mantenimiento','Bajo'],['Aplicación','Residencial y comercial, interior y exterior']]}]
+    },
+    'cf-slide':{
+      cat:'Corredera de cristal · ClaroFlex',
+      intro:'Corredera de cristal sin montantes: los paneles se deslizan y se recogen a un lado, dejando el vano totalmente despejado. El peso se apoya en el carril inferior para máxima estabilidad y seguridad.',
+      feats:['Altura hasta 3.300 mm','Peso hasta 150 kg/panel','Aislamiento 5,6 W/m²K','Garantía 5 años'],
+      aperturas:['Apertura lateral — a izquierda o derecha','Apertura central — hacia ambos lados','Configuración en ángulo a 90°','Número de paneles ilimitado (con extensiones)'],
+      series:[{id:'Slide',nombre:'Corredera Slide',foto:'productos/claroflex/slide.jpeg',
+        sub:'Sistema de corredera de cristal sin montantes verticales, para cerrar terrazas y balcones con la máxima transparencia. Carro de rodadura de alta calidad y funcionamiento sin mantenimiento.',
+        ficha:[['Altura máxima','3.300 mm'],['Peso máx. por panel','150 kg'],['Aislamiento térmico','5,6 W/m²K'],['Aislamiento acústico','34 dB'],['Estanqueidad al aire','Clase 2'],['Vidrio','Templado o laminado de seguridad'],['Garantía','5 años']]}]
+    },
+    'cf-pivot':{
+      cat:'Cortina de cristal · ClaroFlex',
+      intro:'Cortina de cristal cuyos paneles pivotan y se apilan a un lado, dejando el vano abierto por completo. Sin taladros en el vidrio y sin rodamientos que mantener.',
+      feats:['Altura hasta 3.200 mm','Hasta 18 paneles','Giro 90°–270°','Vidrio sin taladros'],
+      aperturas:['Deslizan a derecha, izquierda o ambos lados','Apertura hacia el interior o el exterior','Giro de paneles de 90° hasta 270°','Tramos en ángulo y estructuras circulares'],
+      series:[{id:'Pivot',nombre:'Cortina de Cristal Pivot',foto:'productos/claroflex/pivot.jpeg',
+        sub:'Sistema de cristal que se pliega y apila a un lado, ideal para terrazas, balcones y locales comerciales. Perfiles de aluminio y componentes de calidad europea.',
+        ficha:[['Altura máxima','3.200 mm'],['Ancho de panel','350 – 800 mm'],['Paneles por apertura','hasta 18'],['Giro de paneles','90° – 270°'],['Vidrio','Templado y/o laminado, sin taladros'],['Garantía','5 años']]}]
+    },
+    'cf-duo':{
+      cat:'Cortina de cristal con cámara · ClaroFlex',
+      intro:'Cortina de cristal con doble acristalamiento (vidrio de cámara): los paneles se deslizan y se recogen a un lado, con apertura de cierre lateral de 180°. La cámara de aire aporta el mejor aislamiento térmico y acústico de la gama.',
+      feats:['Altura hasta 2.600 mm','Vidrio de cámara hasta 28 mm','Aislamiento acústico 32 dB','Cierre lateral 180°'],
+      aperturas:['Apertura con cierre lateral de 180°','Se recogen a la derecha, izquierda o ambos lados','Paneles giran por esquinas de 90° o 270°','Terminación sobre suelo o embutida'],
+      series:[{id:'Duo',nombre:'Cristal Duo',foto:'productos/claroflex/duo.jpeg',
+        sub:'Cortina de cristal con doble acristalamiento para el mejor confort térmico y acústico. Apertura con cierre lateral de serie, personalizable según el color elegido.',
+        ficha:[['Altura máxima','2.600 mm'],['Ancho de panel','400 – 800 mm'],['Paneles por apertura','hasta 14'],['Vidrio de cámara','hasta 28 mm (16/18/20 mm)'],['Aislamiento acústico','32 dB'],['Permeabilidad al aire','Clase 3'],['Estanqueidad al agua','Clase 5A'],['Peso máx. por panel','45 kg']]}]
     }
   };
   const modal=document.getElementById('prodModal');
@@ -1305,7 +1461,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     card.scrollTo(0,0);
   }
   function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-  document.querySelectorAll('.mat[data-prod]').forEach(c=>c.addEventListener('click',()=>open(c.dataset.prod)));
+  document.querySelectorAll('[data-prod]').forEach(c=>c.addEventListener('click',()=>open(c.dataset.prod)));
   $('pmClose').onclick=close;
   $('pmCta').onclick=()=>{close();$('contacto').scrollIntoView({behavior:'smooth'});};
   $('pmGal').onclick=()=>{
@@ -1722,7 +1878,7 @@ window.enviarSolicitud = async function(e){
     "Estructuras en aluminio":"Aluminum structures","Estructuras con tubo de aluminio de alta calidad, ligeras y resistentes.":"Structures in high-quality aluminum tube, light and strong.",
     "Aluminio":"Aluminum","Templado":"Tempered","Laminado":"Laminated","Titán":"Titán","Vidrio":"Glass","3 series":"3 series","2–6 hojas":"2–6 panels","Balconeras":"Patio doors","Plegable E63":"E63 folding","Panorámico":"Panoramic","Fijo":"Fixed","Mampara":"Partition","Sin marco":"Frameless","Pasamanos":"Handrail","Muro cortina":"Curtain wall","Compuesta":"Composite","Motorizado":"Motorized","Manual":"Manual","A medida":"Custom","Zebra":"Zebra","Blackout":"Blackout","Ondas":"Waves","Retráctil":"Retractable","Pergolado":"Pergola","Acanalado":"Fluted","Muralla":"Wall","Imitación madera":"Wood-look","Resistente":"Durable","Iluminado":"Lit","Tubo aluminio":"Aluminum tube","Exterior":"Outdoor",
     "Personalización":"Customization","El color y acabado que tu proyecto necesita":"The color and finish your project needs","Elegimos contigo el acabado del perfil y el tinte del vidrio para que la pieza se integre perfectamente a la arquitectura del espacio.":"We choose the profile finish and glass tint with you so the piece integrates perfectly into the architecture of the space.",
-    "Natural":"Natural","Negro":"Black","Blanco":"White","Bronce":"Bronze","Madera":"Wood","RAL":"RAL","Antracita":"Anthracite",
+    "Natural":"Natural","Negro":"Black","Blanco":"White","Bronce":"Bronze","Madera":"Wood","RAL":"RAL","Gris grafito":"Graphite grey","Anodizado inox":"Anodized stainless",
     // Configurador
     "Personalízala":"Customize it","Configura tu ventana":"Configure your window","Gírala, ábrela y prueba los acabados en tiempo real. Así se verá en tu espacio.":"Rotate it, open it and try the finishes in real time. This is how it will look in your space.",
     "↔ Arrastra para girar la ventana":"↔ Drag to rotate the window","Corredera 2 hojas":"2-panel sliding door","Aluminio & vidrio a tu medida":"Custom aluminum & glass","Elige el acabado del perfil y prueba la apertura. Fabricamos cualquier color RAL bajo pedido.":"Choose the profile finish and try the opening. We manufacture any RAL color on request.",
@@ -1854,7 +2010,7 @@ window.enviarSolicitud = async function(e){
     "Estructuras en aluminio":"Structures en aluminium","Estructuras con tubo de aluminio de alta calidad, ligeras y resistentes.":"Structures en tube d'aluminium de haute qualité, légères et résistantes.",
     "Aluminio":"Aluminium","Templado":"Trempé","Laminado":"Feuilleté","Titán":"Titán","Vidrio":"Verre","3 series":"3 séries","2–6 hojas":"2–6 vantaux","Balconeras":"Baies","Plegable E63":"Pliant E63","Panorámico":"Panoramique","Fijo":"Fixe","Mampara":"Paroi","Sin marco":"Sans cadre","Pasamanos":"Main courante","Muro cortina":"Mur-rideau","Compuesta":"Composite","Motorizado":"Motorisé","Manual":"Manuel","A medida":"Sur mesure","Zebra":"Zebra","Blackout":"Occultant","Ondas":"Vagues","Retráctil":"Rétractable","Pergolado":"Pergola","Acanalado":"Cannelé","Muralla":"Mural","Imitación madera":"Aspect bois","Resistente":"Résistant","Iluminado":"Éclairé","Tubo aluminio":"Tube alu","Exterior":"Extérieur",
     "Personalización":"Personnalisation","El color y acabado que tu proyecto necesita":"La couleur et la finition dont votre projet a besoin","Elegimos contigo el acabado del perfil y el tinte del vidrio para que la pieza se integre perfectamente a la arquitectura del espacio.":"Nous choisissons avec vous la finition du profilé et la teinte du verre pour que la pièce s'intègre parfaitement à l'architecture de l'espace.",
-    "Natural":"Naturel","Negro":"Noir","Blanco":"Blanc","Bronce":"Bronze","Madera":"Bois","RAL":"RAL","Antracita":"Anthracite",
+    "Natural":"Naturel","Negro":"Noir","Blanco":"Blanc","Bronce":"Bronze","Madera":"Bois","RAL":"RAL","Gris grafito":"Gris graphite","Anodizado inox":"Anodisé inox",
     "Personalízala":"Personnalisez-la","Configura tu ventana":"Configurez votre fenêtre","Gírala, ábrela y prueba los acabados en tiempo real. Así se verá en tu espacio.":"Tournez-la, ouvrez-la et testez les finitions en temps réel. Voici à quoi elle ressemblera chez vous.",
     "↔ Arrastra para girar la ventana":"↔ Faites glisser pour tourner la fenêtre","Corredera 2 hojas":"Coulissant 2 vantaux","Aluminio & vidrio a tu medida":"Aluminium & verre sur mesure","Elige el acabado del perfil y prueba la apertura. Fabricamos cualquier color RAL bajo pedido.":"Choisissez la finition du profilé et testez l'ouverture. Nous fabriquons toute couleur RAL sur commande.",
     "Acabado del perfil":"Finition du profilé","Abrir ventana":"Ouvrir la fenêtre","Cerrar ventana":"Fermer la fenêtre",
