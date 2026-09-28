@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ARTAL</title>
+<link rel="icon" href="/favicon-32.png">
+<style>
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#0A3D62; color:#fff; font-family:Arimo, Arial, sans-serif; text-align:center; padding:24px; box-sizing:border-box; }
+  img { width:140px; margin-bottom:18px; }
+  p { margin:6px 0; opacity:.92; }
+  a { color:#fff; }
+</style>
+</head>
+<body>
+<div>
+  <img src="/logo.png" alt="ARTAL">
+  <p id="msg">Abriendo…</p>
+</div>
+<script>
+  // GitHub Pages sirve esta página para cualquier ruta que no exista. Si la ruta es /e/CODIGO (enlace corto de la
+  // encuesta de satisfacción), redirige a la encuesta; si no, ofrece volver al inicio.
+  (function () {
+    var m = location.pathname.match(/\/e\/([A-Za-z0-9]{6,40})\/?$/);
+    if (m) { location.replace('https://artaldomrd-sudo.github.io/mesures-artel/ops/satisfaccion.html?t=' + encodeURIComponent(m[1])); return; }
+    document.getElementById('msg').innerHTML = 'Esta página no existe. <a href="/">Ir a artaldominicana.com</a>';
+  })();
+</script>
+</body>
+</html>

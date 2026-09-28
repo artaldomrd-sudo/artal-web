@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ARTAL — Encuesta</title>
+<link rel="icon" href="/favicon-32.png">
+<style>
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#0A3D62; color:#fff; font-family:Arimo, Arial, sans-serif; text-align:center; padding:24px; box-sizing:border-box; }
+  img { width:140px; margin-bottom:18px; }
+  p { margin:6px 0; opacity:.92; }
+  a { color:#fff; }
+</style>
+</head>
+<body>
+<div>
+  <img src="/logo.png" alt="ARTAL">
+  <p id="msg">Abriendo la encuesta…</p>
+</div>
+<script>
+  // Enlace corto de la encuesta de satisfacción: artaldominicana.com/e/CODIGO (también /e/?CODIGO o /e/#CODIGO).
+  // Redirige a la encuesta del panel de operaciones de ARTAL. Sin código, vuelve al sitio.
+  (function () {
+    var m = location.pathname.match(/\/e\/([A-Za-z0-9]{6,40})\/?$/);
+    var code = (m && m[1]) || location.search.replace(/^\?t?=?/, '').replace(/[^A-Za-z0-9]/g, '') || location.hash.replace(/[^A-Za-z0-9]/g, '');
+    if (code) location.replace('https://artaldomrd-sudo.github.io/mesures-artel/ops/satisfaccion.html?t=' + encodeURIComponent(code));
+    else { document.getElementById('msg').innerHTML = 'Este enlace no es válido. <a href="/">Ir a artaldominicana.com</a>'; }
+  })();
+</script>
+</body>
+</html>
